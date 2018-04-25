@@ -41,10 +41,10 @@ System.out.println(search);
 	right: 100px;
     color: orange;
 }
-   	    img {
+   	 #img1 {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 500;
+    margin-right: 500;
 	}
     #rcorners1 {
     border-radius: 25px;
@@ -174,9 +174,9 @@ System.out.println(search);
 			</table>
 				</div>
 				<div class="column" style="background-color:#f2f2f2;">
-					<img class="mySlides"  src="http://andrewmarkveety.com/upload/t/two-storey-house-plans-pinoy-eplans-double-story-modern-house-plans.jpeg" style="width:100%">
-					<img class="mySlides"  src="http://houzbuzz.com/wp-content/uploads/2016/03/case-cu-etaj-moderne-Two-story-modern-house-plans-1-980x600.jpg" style="width:100%">
-				  	<img class="mySlides" src="https://www.google.com/search?safe=off&client=firefox-b-1-ab&tbm=isch&q=house+image&chips=q:house+image,g_4:two+story,g_2:modern&sa=X&ved=0ahUKEwi97vrIpNTaAhVqUN8KHRmsBw4Q4lYIKygA&biw=1504&bih=889&dpr=1.5#imgrc=GmQi2TpOwuvBGM:" style="width:100%">	
+					<img id = "img1" class="mySlides" style="width:128;height:128;"  src="http://andrewmarkveety.com/upload/t/two-storey-house-plans-pinoy-eplans-double-story-modern-house-plans.jpeg" >
+					<img id = "img1" class="mySlides" style="width:128;height:128;" src="https://1cqgxm3l59yi2wwbnn3qy35h-wpengine.netdna-ssl.com/wp-content/uploads/2015/05/Blue-Lakehouse-on-Lake-Geneva-in-Wisconsin-17-400x305.jpg" >
+				  	<img id = "img1" class="mySlides" style="width:128;height:128;" src="https://images.familyhomeplans.com/plans/59952/59952-B600.jpg" >	
 				
 				  	<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
 				  	<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>

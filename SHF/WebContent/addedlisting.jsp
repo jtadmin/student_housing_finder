@@ -122,11 +122,11 @@ System.out.println(search);
 			
 	 <section class="main-block light-bg">
 	     <div class="container"> 
-	     	<h3 align="center">Listing ID: 0000<%=request.getParameter("listingid") %></h3>
+	     	<h3 align="center">Listing ID: 0000${listingid}</h3>
 			<table  id = "t01" align="center" style = "width:80%">
 		  <tr>
 		    <td ><a href = "listing.jsp" >Address: <%=request.getParameter("address1") %>, <%=request.getParameter("city") %></a> </td>
-		    <td rowspan="2"><img src = "<%=rs.getString("image2")%>" width="350" height="200" ></td>
+		    <td rowspan="2"><img src = "" width="350" height="200" ></td>
 		  </tr>
 		  <tr>
 		    <td > Cost: <%=request.getParameter("cost") %>/month</td>

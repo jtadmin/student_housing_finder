@@ -99,9 +99,21 @@ public class AddNewListing extends HttpServlet {
 				ps.executeUpdate();	
 				System.out.println("Entered NEW Listing into Database");
 				
-
-				RequestDispatcher rd = request.getRequestDispatcher("addedlisting.jsp");
-				rd.forward(request, response);
+				String sql1 = "select listingid from listings where address1=?";
+				ps.setString(1,address1);
+				ResultSet rs = ps.executeQuery(sql1);
+				
+				
+				String listingid = null;
+				while(rs.next())
+				{
+					listingid = rs.getString("listingid");
+				}
+				request.setAttribute("listingid",listingid);
+				
+				request.getRequestDispatcher("addedlisting.jsp").forward(request,response);
+				//RequestDispatcher rd = request.getRequestDispatcher("addedlisting.jsp");
+				//rd.forward(request, response);
 
 			
 	     	} 

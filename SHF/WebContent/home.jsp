@@ -30,8 +30,8 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-        img {
-    display: block;
+    #img1 {
+    display:block;
     margin-left: auto;
     margin-right: auto;
 	}
@@ -95,7 +95,7 @@
                                     </li>
                                     <li><a href="addlisting.jsp" class="nav-link"><span class="ti-plus"></span> Add Listing</a></li>
 									<li class="nav-item active">
-                                    <a id="rcorners1"class="nav-link" href="profile.jsp"><% if(session.getAttribute("name") != null){%><%=session.getAttribute("name")%></a><%}else{%><a class="nav-link" href="reg.jsp">Login<%}%></a>
+                                    <a id="rcorners1" class="nav-link" href="profile.jsp"><% if(session.getAttribute("name") != null){%><%=session.getAttribute("name")%></a><%}else{%><a class="nav-link" href="reg.jsp">Login<%}%></a>
 									</li>
                                 </ul>
                             </div>
@@ -161,8 +161,8 @@
 			
 		%>
 		  <tr>
-		    <td > <input type="hidden" name="indv" value="<%=rs.getString("address1")%>"><a href = "listing.jsp" >Address: <%=rs.getString("address1") %>, </a><a><%=rs.getString("city") %></a> </td>
-		    <td rowspan="2"><img src = "<%=rs.getString("image2")%>" width="350" height="200" ></td>
+		    <td > <input type="hidden" name="indv" value="<%=rs.getString("address1")%>"><a href = "Listing" >Address: <%=rs.getString("address1") %>, </a><a><%=rs.getString("city") %></a> </td>
+		    <td rowspan="2"><img id = "img1"  src = "<%=rs.getString("image2")%>" width="300" height="150" ></td>
 		  </tr>
 		  <tr>
 		    <td > Cost: <%=rs.getString("cost") %>/month </td>

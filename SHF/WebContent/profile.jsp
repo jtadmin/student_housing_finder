@@ -83,7 +83,7 @@
                                     </li>
                                     <li><a href="addlisting.jsp" class="nav-link"><span class="ti-plus"></span> Add Listing</a></li>
 									<li class="nav-item active">
-                                    <a class="nav-link" href="reg.jsp"> <%= request.getParameter("name") %></a>
+                                    <a id="rcorners1" class="nav-link" href="profile.jsp"><% if(session.getAttribute("name") != null){%><%=session.getAttribute("name")%></a><%}else{%><a class="nav-link" href="reg.jsp">Login<%}%></a>
 									</li>
                                 </ul>
                             </div>
@@ -96,14 +96,102 @@
 <!--============================= User Details =============================-->
     <section class="main-block light-bg">
         <div class="container">
-        	<h3>Your Profile</h3>
+        	<h3 align = "center">Your Profile</h3>
+			<table>
+    <%
+    try{	
+  
+    	String name = (String)session.getAttribute("name");
+    	System.out.println(name);
+    	
+       	String sql = "select * from user where name = ?";
+       	
+
+        Class.forName("org.sqlite.JDBC");
+    	Connection conn = DriverManager.getConnection("jdbc:sqlite:C://sqlite/shf.db");
+       	PreparedStatement ps = conn.prepareStatement(sql);
+       	ps.setString(1,name);
+    	
+	    ResultSet rs = ps.executeQuery();
+		while(rs.next())
+		{
+		%>
+			<tr> 
+			<td>Username:</td> 
+			<td><a color ="Red"><%=rs.getString("name") %></td> 
+			</tr>
+			<tr>
+			<td>Email Address:</td> 
+			<td><a color ="Red"><%=rs.getString("email") %></td> 
+			</tr>
+			<tr>
+			<td>Contact Number:</td> 
+			<td><a color ="Red"><%=rs.getString("contact_no") %></td> 
+			</tr>
+			<tr>
+			</tr>
+		<%	
+	
+		}
+		conn.close();
+		rs.close();
+    	
+    }catch (SQLException e)
+    {
+    	e.printStackTrace();
+    }
+
+    %>			
+			</table>        	
         </div>
     </section>
  <!--//END ADD LISTING -->
  <!--============================= User Listings =============================-->
     <section class="main-block light-bg">
         <div class="container">
-        	<h3>Your Listings</h3>
+        	<h3 align = "center">Your Listings</h3>
+        	<table  id = "t01" align="center" style = "width:80%">
+			
+    <%
+    try{	
+  
+    	String name = (String)session.getAttribute("name");
+    	
+       	String sql = "select * from listings where username = ?";
+       	
+
+        Class.forName("org.sqlite.JDBC");
+    	Connection conn = DriverManager.getConnection("jdbc:sqlite:C://sqlite/shf.db");
+       	PreparedStatement ps = conn.prepareStatement(sql);
+       	ps.setString(1,name);
+    	
+	    ResultSet rs = ps.executeQuery();
+		while(rs.next())
+		{
+		%>
+		  <tr>
+		    <td ><a href = "listing.jsp" >Address: <%=rs.getString("address1") %>, <%=rs.getString("city") %><br/> </td>
+		    <td rowspan="2"><img src = "<%=rs.getString("image2")%>" width="350" height="200" ></td>
+		  </tr>
+		  <tr>
+		    <td > Cost: <%=rs.getString("cost") %>/month </td>
+		  </tr>
+		<%	
+	
+		}
+		conn.close();
+		rs.close();
+    	
+    }catch (SQLException e)
+    {
+    	e.printStackTrace();
+    }
+
+    %>
+   				
+			</table>
+	     </div>
+	 </section>
         </div>
     </section>
  <!--//END ADD LISTING -->
@@ -119,10 +207,14 @@
                     </div>
                 </div>
             </div>
+            
+   <%
+   %>  
+     
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="featured-btn-wrap">
-                        <a id="rcorners1"class="nav-link" href="profile.jsp"><% if(session.getAttribute("name") != null){%><%=session.getAttribute("name")%></a><%}else{%><a class="nav-link" href="reg.jsp">Login<%}%></a>
+                        <a href="addlisting.jsp" class="btn btn-danger"><span class="ti-plus"></span> ADD LISTING</a>
                     </div>
                 </div>
             </div>

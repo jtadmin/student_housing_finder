@@ -32,7 +32,7 @@ System.out.println(search);
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
    	<style>
-   	    img {
+   	    #img1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -91,10 +91,10 @@ System.out.println(search);
                                 <ul class="navbar-nav">
             
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="#">About</a>
+                                        <a class="nav-link" href="home.jsp">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="searchresults.jsp">Listings</a>
+                                        <a class="nav-link" href="recentlistings.jsp">Listings</a>
                                     </li>
                                     <li><a href="addlisting.jsp" class="nav-link"><span class="ti-plus"></span> Add Listing</a></li>
 									<li class="nav-item active">
@@ -127,55 +127,55 @@ System.out.println(search);
 <!--//Search Bar -->
 
 <!--============================= RECENT LISTING =============================-->
-
 	 <section class="main-block light-bg">
 	     <div class="container"> 
-	     	<h3 align="center">Search Results</h3>
+	     	<h3 align="center">Recent Listings</h3>
 			<table  id = "t01" align="center" style = "width:80%">
 			
     <%
     try{	
-  
-   	
+    	Connection conn = null;
        	String sql = "select * from listings";
-       	
+    	
+       	Blob image = null;
+       	byte[] imgData = null;
 
         Class.forName("org.sqlite.JDBC");
-    	Connection conn = DriverManager.getConnection("jdbc:sqlite:C://sqlite/shf.db");
+    	conn = DriverManager.getConnection("jdbc:sqlite:C://sqlite/shf.db");
        	PreparedStatement ps = conn.prepareStatement(sql);
-       	int count =0;
-    	
+       	
+    	int count = 0;
 	    ResultSet rs = ps.executeQuery();
 		while(rs.next())
 		{
+			
 		%>
 		  <tr>
-		    <td >Address: <%=rs.getString("address1") %>, <%=rs.getString("city") %><br/> </td>
-		    <td rowspan="2"><img src = "<%=rs.getString("image2")%>" width="350" height="200" ></td>
+		    <td > <input type="hidden" name="indv" value="<%=rs.getString("address1")%>"><a href = "Listing" >Address: <%=rs.getString("address1") %>, </a><a><%=rs.getString("city") %></a> </td>
+		    <td rowspan="2"><img id = "img1"  src = "<%=rs.getString("image2")%>" width="300" height="150" ></td>
 		  </tr>
 		  <tr>
 		    <td > Cost: <%=rs.getString("cost") %>/month </td>
 		  </tr>
 		<%	
-		count++;
-		if(count == 10)
+		 count++;
+		if(count==10)
 			break;
-	
 		}
     	
-		conn.close();
-		ps.close();
     }catch (SQLException e)
     {
     	e.printStackTrace();
+    
     }
-
+    	
+    		
     %>
    				
 			</table>
 	     </div>
 	 </section>
-<!--//END RECENT LISTING -->
+		 <!--//END RECENT LISTING -->
 
 
     <!--============================= FOOTER =============================-->

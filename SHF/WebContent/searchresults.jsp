@@ -29,7 +29,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
    	<style>
-   	    img {
+   	    #img1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -143,20 +143,34 @@
        	PreparedStatement ps = conn.prepareStatement(sql);
        	ps.setString(1,search);
     	
+		boolean noResults = true;
+       	String dbSearch = null;
 	    ResultSet rs = ps.executeQuery();
 		while(rs.next())
 		{
+			dbSearch = rs.getString("zipcode");
+			if(dbSearch == search)
+			{
+				noResults = false;
+			}
 		%>
 		  <tr>
-		    <td >Address: <%=rs.getString("address1") %>, <%=rs.getString("city") %><br/> </td>
+		    <td ><a href = "listing.jsp" >Address: <%=rs.getString("address1") %>, <%=rs.getString("city") %><br/> </td>
 		    <td rowspan="2"><img src = "<%=rs.getString("image2")%>" width="350" height="200" ></td>
 		  </tr>
 		  <tr>
 		    <td > Cost: <%=rs.getString("cost") %>/month </td>
 		  </tr>
 		<%	
+
 	
 		}
+		if(noResults == true)
+			%> 
+			<h3> <br></h3>
+			<h5 style = "color:#e60000" align = "middle">Oops! No results found for <%=request.getParameter("search") %></h5>
+			<h3> <br></h3>
+			<%
     	
     }catch (SQLException e)
     {

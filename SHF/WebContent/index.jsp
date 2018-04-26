@@ -161,9 +161,6 @@
 		if(count==10)
 			break;
 		}
-		conn.close();
-		ps.close();
-		rs.close();
     	
     }catch (SQLException e)
     {

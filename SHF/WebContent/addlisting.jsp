@@ -66,6 +66,7 @@
                                     </li>
                                   	<li class="nav-item active">
                                     <a id="rcorners1"class="nav-link" href="profile.jsp"><% if(session.getAttribute("name") != null){%><%=session.getAttribute("name")%></a><%}else{%><a class="nav-link" href="reg.jsp">Login<%}%></a>
+                                    <% if(session.getAttribute("name") != null){%><a id="rcorners1" class="nav-link" href="profile.jsp"><%=session.getAttribute("name")%></a><%}else{%><a id="rcorners1" class="nav-link" href="reg.jsp">Login<%}%></a>
 									</li>
                                 </ul>
                             </div>

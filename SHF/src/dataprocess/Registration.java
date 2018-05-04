@@ -61,7 +61,7 @@ public class Registration extends HttpServlet {
 				
 				if(password.equals(confpassword))
 				{
-				RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("reg.jsp");
 				rd.forward(request, response);
 				}
 				else

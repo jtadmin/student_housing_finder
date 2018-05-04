@@ -86,10 +86,6 @@
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>
                                     <input id="password" name="password" required="required" type="password" placeholder="Password" /> 
                                 </p>
-                                <p class="keeplogin"> 
-									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-									<label for="loginkeeping">Accept  Terms and Conditions.</label>
-								</p>
                                 <p class="login button"> 
                                     <input type="submit" value="Login" /> 
 								</p>

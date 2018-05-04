@@ -162,15 +162,17 @@
 		    <td > Cost: <%=rs.getString("cost") %>/month </td>
 		  </tr>
 		<%	
-
-	
 		}
+		
+		/*
 		if(noResults == true)
+		{
 			%> 
 			<h3> <br></h3>
 			<h5 style = "color:#e60000" align = "middle">Oops! No results found for <%=request.getParameter("search") %></h5>
 			<h3> <br></h3>
 			<%
+		}*/
     	
     }catch (SQLException e)
     {
